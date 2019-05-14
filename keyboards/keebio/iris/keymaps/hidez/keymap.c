@@ -5,6 +5,8 @@ extern keymap_config_t keymap_config;
 #define _QWERTY 0
 #define _FUNCD 1
 //#define _RESERVED 2
+#define FN_SCRCAPT LSFT(LCMD(KC_3)) //Screen Capture(Shift+CMD+3)
+#define FN_SCRCAPTSEL LSFT(LCMD(KC_4)) //Screen Capture Selected(Shift+CMD+4)
 #define FN_SCLK LCMD(LCTL(KC_Q)) //Screen Lock(CMD+CTL+Q)
 #define FN_VOLD KC__VOLDOWN //Volume Down
 #define FN_VOLU KC__VOLUP   //Volume Up
@@ -22,6 +24,8 @@ enum {
   TD_BSLS_PIPE,
   TD_GRV_TILD,
   TD_QUOT_DQT,
+  TD_F3_SCRCAPT,
+  TD_F4_SCRCAPTSEL,
 };
 
 qk_tap_dance_action_t tap_dance_actions[] = {
@@ -30,6 +34,8 @@ qk_tap_dance_action_t tap_dance_actions[] = {
   [TD_BSLS_PIPE]  = ACTION_TAP_DANCE_DOUBLE(KC_BSLS, KC_PIPE), // \ or double tap |
   [TD_GRV_TILD]   = ACTION_TAP_DANCE_DOUBLE(KC_GRV, KC_TILD),  // ` or double tap ~
   [TD_QUOT_DQT]   = ACTION_TAP_DANCE_DOUBLE(KC_QUOT, KC_DQT),  // ' or double tap "
+  [TD_F3_SCRCAPT] = ACTION_TAP_DANCE_DOUBLE(KC_F3, FN_SCRCAPT), // F3 or double tap Screen Capture
+  [TD_F4_SCRCAPTSEL] = ACTION_TAP_DANCE_DOUBLE(KC_F4, FN_SCRCAPTSEL), // F3 or double tap Screen Capture Selected
 };
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
@@ -50,7 +56,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   [_FUNCD] = LAYOUT(
   //┌────────┬────────┬────────┬────────┬────────┬────────┐                          ┌────────┬────────┬────────┬────────┬────────┬────────┐
-     KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F6,                              _______, _______, TD(TD_LBRC_LCBR), TD(TD_RBRC_RCBR), TD(TD_BSLS_PIPE), TD(TD_GRV_TILD),
+     KC_F1,   KC_F2,   TD(TD_F3_SCRCAPT), TD(TD_F4_SCRCAPTSEL), KC_F5,   KC_F6,                              _______, _______, TD(TD_LBRC_LCBR), TD(TD_RBRC_RCBR), TD(TD_BSLS_PIPE), TD(TD_GRV_TILD),
   //├────────┼────────┼────────┼────────┼────────┼────────┤                          ├────────┼────────┼────────┼────────┼────────┼────────┤
      _______, FN_SCLK, KC_F7,   KC_F8,   KC_F9,   KC_F10,                             _______, _______, _______, _______, _______, KC_DEL,
   //├────────┼────────┼────────┼────────┼────────┼────────┤                          ├────────┼────────┼────────┼────────┼────────┼────────┤
