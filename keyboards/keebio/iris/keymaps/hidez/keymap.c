@@ -10,6 +10,8 @@ extern keymap_config_t keymap_config;
 #define FN_SCLK LCMD(LCTL(KC_Q)) //Screen Lock(CMD+CTL+Q)
 #define FN_VOLD KC__VOLDOWN //Volume Down
 #define FN_VOLU KC__VOLUP   //Volume Up
+#define FN_VSC_FOCSTERM LCMD(KC_M) //Focus on terminal(for VSCode)
+#define FN_VSC_FOCSEDIT LCMD(KC_1) //Focus on first editor group(for VSCode)
 
 enum custom_keycodes {
   QWERTY = SAFE_RANGE,
@@ -58,7 +60,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //┌────────┬────────┬────────┬────────┬────────┬────────┐                          ┌────────┬────────┬────────┬────────┬────────┬────────┐
      KC_F1,   KC_F2,   TD(TD_F3_SCRCAPT), TD(TD_F4_SCRCAPTSEL), KC_F5,   KC_F6,                              _______, _______, TD(TD_LBRC_LCBR), TD(TD_RBRC_RCBR), TD(TD_BSLS_PIPE), TD(TD_GRV_TILD),
   //├────────┼────────┼────────┼────────┼────────┼────────┤                          ├────────┼────────┼────────┼────────┼────────┼────────┤
-     _______, FN_SCLK, KC_F7,   KC_F8,   KC_F9,   KC_F10,                             _______, _______, _______, _______, _______, KC_DEL,
+     _______, FN_SCLK, KC_F7,   KC_F8,   KC_F9,   KC_F10,                             _______, FN_VSC_FOCSTERM, FN_VSC_FOCSEDIT, _______, _______, KC_DEL,
   //├────────┼────────┼────────┼────────┼────────┼────────┤                          ├────────┼────────┼────────┼────────┼────────┼────────┤
      _______, _______, KC_F11,  KC_F12,  _______, _______,                            KC_LEFT, KC_DOWN, KC_UP,   KC_RIGHT,TD(TD_QUOT_DQT), _______,
   //├────────┼────────┼────────┼────────┼────────┼────────┼────────┐        ┌────────┼────────┼────────┼────────┼────────┼────────┼────────┤
